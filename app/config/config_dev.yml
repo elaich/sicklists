@@ -34,3 +34,7 @@ assetic:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+#
+doctrine:
+    dbal:
+        dbname: "lists_dev"
