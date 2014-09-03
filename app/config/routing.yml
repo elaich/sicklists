@@ -1,0 +1,4 @@
+sick_lists:
+    resource: "@SickListsBundle/Resources/config/routing.yml"
+    prefix:   /
+
