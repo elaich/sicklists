@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 use Sick\Bundle\ListsBundle\Entity\ListItem;
+use Sick\Bundle\ListsBundle\Form\ListItemType;
 
 class ListsController extends Controller
 {
@@ -19,12 +20,7 @@ class ListsController extends Controller
 
 		$item = new ListItem();
 
-		$form = $this->createFormBuilder($item)
-					->setAction($this->generateUrl('sick_lists_postitem'))
-					->add('text', 'text', array(
-						'attr' => array('placeholder' => 'Enter a task')
-					))
-					->getForm();
+		$form = $this->createForm(new ListItemType(), $item);
 
         return $this->render('SickListsBundle:Lists:index.html.twig', array(
 			'form' => $form->createView(),
@@ -36,12 +32,7 @@ class ListsController extends Controller
 	{
 		$item = new ListItem();
 
-		$form = $this->createFormBuilder($item)
-					->setAction($this->generateUrl('sick_lists_postitem'))
-					->add('text', 'text', array(
-						'attr' => array('placeholder' => 'Enter a task')
-					))
-					->getForm();
+		$form = $this->createForm(new ListItemType(), $item);
 
 		$form->bind($request);
 
@@ -50,7 +41,7 @@ class ListsController extends Controller
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($item);
 			$em->flush();
-		}
+		} 
 
 		return $this->redirect($this->generateUrl('sick_lists_homepage'));
 	}

@@ -38,7 +38,7 @@ class ListsControllerTest extends WebTestCase
 			"Didn't find the form"
 		);
 
-		$input = $form->filter('input[name="form[text]"]');
+		$input = $form->filter('input[name="sick_lists_form[text]"]');
 
 		$this->assertEquals('Enter a task', $input->attr('placeholder'), "Add the placeholder ;)");
 	}
@@ -70,14 +70,12 @@ class ListsControllerTest extends WebTestCase
 	public function testPostItem()
 	{
 		$this->client->followRedirects(true);
-
 		$crawler = $this->client->request('GET', '/');
-
+		$formData = array(
+			'sick_lists_form' => array('text' => 'Call abdelatif')
+		);
 		$form = $crawler->filter('form')->form();
-
-		$crawler = $this->client->submit($form, array(
-			'form[text]' => 'Call abdelatif'
-		));
+		$crawler = $this->client->submit($form, $formData);
 
 		$this->assertGreaterThan(
 			0,

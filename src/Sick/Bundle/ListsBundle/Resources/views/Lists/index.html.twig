@@ -11,7 +11,7 @@
 
 {% block content %}
 <header>
-	{{ form(form) }}
+	{{ form(form, {'action': path('sick_lists_postitem')}) }}
 </header>
 <article>
 	<ul class="items">
