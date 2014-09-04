@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}SickLists{% endblock %}
+
+
+{% block stylesheets %}
+	<link href="{{ asset('bundles/sicklists/css/layout.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+<section id="wrapper">
+	<section id="left-menu">
+		{% block leftmenu %}
+			Left Menu
+		{% endblock %}
+	</section>
+	<section id="content">
+		{% block content %}
+			Content
+		{% endblock %}
+	</section>
+</section>
+{% endblock %}

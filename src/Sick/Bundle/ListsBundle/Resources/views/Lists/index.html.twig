@@ -1,11 +1,25 @@
-{% extends "::base.html.twig" %}
+{% extends "SickListsBundle::layout.html.twig" %}
 
-{% block title %}SickListsBundle:Lists:index{% endblock %}
+{% block stylesheets %}
+	{{ parent() }}
+	<link href='http://fonts.googleapis.com/css?family=Reenie+Beanie' rel='stylesheet' type='text/css'>
+{% endblock %}
 
-{% block body %}
-<h1>Welcome to the Lists:index page</h1>
+{% block leftmenu %}
+<h1>SickLists</h1>
+{% endblock %}
+
+{% block content %}
+<header>
 	{{ form(form) }}
+</header>
+<article>
+	<ul class="items">
 	{% for item in items %}
+		<li class="task-item">
 		{{ loop.index }}: {{ item.text }}
+		</li>
 	{% endfor %}
+	</ul>
+</article>
 {% endblock %}
