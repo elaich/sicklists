@@ -4,6 +4,7 @@
 
 {% block body %}
 <h1>Welcome to the Lists:index page</h1>
+	{{ form(form) }}
 	{% for item in items %}
 		{{ loop.index }}: {{ item.text }}
 	{% endfor %}

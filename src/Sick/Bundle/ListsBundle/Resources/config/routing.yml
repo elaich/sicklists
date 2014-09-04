@@ -1,3 +1,9 @@
 sick_lists_homepage:
     path:     /
     defaults: { _controller: SickListsBundle:Lists:index }
+
+sick_lists_postitem:
+    path:   /items/new
+    defaults: { _controller: SickListsBundle:Lists:addItem }
+    methods: [POST]
+
