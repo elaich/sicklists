@@ -15,12 +15,18 @@ class ListItem
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="AUTO")
 	 */
-	protected $id;
+	private $id;
 
 	/**
 	 * @ORM\Column(type="string")
 	 */
 	protected $text;
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="Project", inversedBy="items")
+	 * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
+	 */
+	protected $project;
 
     /**
      * Get id
@@ -53,5 +59,28 @@ class ListItem
     public function getText()
     {
         return $this->text;
+    }
+
+    /**
+     * Set project
+     *
+     * @param \Sick\Bundle\ListsBundle\Entity\Project $project
+     * @return ListItem
+     */
+    public function setProject(\Sick\Bundle\ListsBundle\Entity\Project $project = null)
+    {
+        $this->project = $project;
+
+        return $this;
+    }
+
+    /**
+     * Get project
+     *
+     * @return \Sick\Bundle\ListsBundle\Entity\Project 
+     */
+    public function getProject()
+    {
+        return $this->project;
     }
 }

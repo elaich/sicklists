@@ -4,22 +4,23 @@ namespace Sick\Bundle\ListsBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Sick\Bundle\ListsBundle\Entity\ListItem;
+use Sick\Bundle\ListsBundle\Entity\Project;
 
-class ListsFixtures extends AbstractFixture implements OrderedFixtureInterface
+class ProjectsFixtures extends AbstractFixture implements OrderedFixtureInterface
 {
 	public function load(ObjectManager $manager)
 	{
-		$item = new ListItem();
-		$item->setText("Buy 20 grams");
-		$item->setProject($this->getReference('project-1'));
+		$project = new Project();
 
-		$manager->persist($item);
+		$manager->persist($project);
 		$manager->flush();
+
+		$this->addReference('project-1', $project);
 	}
 
 	public function getOrder()
 	{
-		return 2;
+		return 1;
 	}
 }
+
