@@ -7,3 +7,7 @@ sick_lists_postitem:
     defaults: { _controller: SickListsBundle:Lists:addItem }
     methods: [POST]
 
+sick_lists_postproject:
+    path: /projects/new
+    defaults: { _controller: SickListsBundle:Project:addProject }
+    methods: [POST]

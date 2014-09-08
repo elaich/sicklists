@@ -11,6 +11,7 @@ class ProjectsFixtures extends AbstractFixture implements OrderedFixtureInterfac
 	public function load(ObjectManager $manager)
 	{
 		$project = new Project();
+		$project->setText('A little project');
 
 		$manager->persist($project);
 		$manager->flush();

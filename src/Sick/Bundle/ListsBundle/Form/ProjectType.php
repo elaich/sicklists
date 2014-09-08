@@ -16,6 +16,9 @@ class ProjectType extends AbstractType
     {
         $builder
             ->add('text')
+			->add('save', 'submit', array(
+				'label' => 'Add Project'
+			))
         ;
     }
     

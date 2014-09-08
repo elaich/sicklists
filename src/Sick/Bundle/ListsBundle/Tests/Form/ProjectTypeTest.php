@@ -34,5 +34,14 @@ class ProjectTypeTest extends TypeTestCase
 		{
 			$this->assertArrayHasKey($key, $children);
 		}
+
+		$this->assertArrayHasKey('save', $children);
+
+		$saveButton = $form->get('save')->getConfig()->getOptions();
+
+		$this->assertArrayHasKey('label', $saveButton);
+
+		$this->assertEquals('Add Project', $saveButton['label']);
+
 	}
 }

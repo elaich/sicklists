@@ -1,0 +1,8 @@
+<ul class="projects">
+	{% for project in projects %}
+		<li class="project-list-item">
+		{{ project.text }}
+		</li>
+	{% endfor %}
+</ul>
+{{ form(form, {'action': path('sick_lists_postproject')}) }}

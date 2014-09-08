@@ -21,9 +21,17 @@ class ProjectControllerTest extends WebTestCase
 		$form = $crawler->selectButton('Add Project')->form();
 
 		$crawler = $client->submit($form, array(
-			'text' => 'A Project'
+			'sick_bundle_listsbundle_project[text]' => 'A Project'
 		));
 
-		$this->assertCount(1, $crawler->filter('#content.items li:contains("A Project")'));
+		$this->assertEquals(1, $crawler->filter('#left-menu li:contains("A Project")')->count());
+
+		$em = $this::$kernel->getContainer()->get('doctrine')->getManager();
+		$repository = $em->getRepository('SickListsBundle:Project');
+		$itemsToBeDeleted = $repository->findBy(array('text' => 'A Project'));
+
+		foreach ($itemsToBeDeleted as $item)
+			$em->remove($item);
+		$em->flush();
 	}
 }
