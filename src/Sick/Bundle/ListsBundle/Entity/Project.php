@@ -22,6 +22,10 @@ class Project
      */
     private $id;
 
+	/**
+	 * @ORM\Column(type="string")
+	 */
+	protected $text;
 
 	/**
 	 *@ORM\OneToMany(targetEntity="ListItem", mappedBy="project")
@@ -74,5 +78,28 @@ class Project
     public function getItems()
     {
         return $this->items;
+    }
+
+    /**
+     * Set text
+     *
+     * @param string $text
+     * @return Project
+     */
+    public function setText($text)
+    {
+        $this->text = $text;
+
+        return $this;
+    }
+
+    /**
+     * Get text
+     *
+     * @return string 
+     */
+    public function getText()
+    {
+        return $this->text;
     }
 }
