@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class ProjectController extends Controller
 {
-	public function indexAction()
+	public function indexAction($project_id)
 	{
 		$repository = $this->getDoctrine()
 							->getRepository('SickListsBundle:Project');
@@ -24,7 +24,8 @@ class ProjectController extends Controller
 
 		return $this->render('SickListsBundle:Projects:projects.html.twig', array(
 			'form' => $form->createView(),
-			'projects' => $projects
+			'projects' => $projects,
+			'project_id' => $project_id,
 		));
 	}
 

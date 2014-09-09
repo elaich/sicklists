@@ -6,9 +6,12 @@
 {% endblock %}
 
 {% block leftmenu %}
-<h1>SickLists</h1>
-{{ render(controller('SickListsBundle:Project:index')) }}
-<a href="">Add Project</a>
+<div id="sl-logo">
+	<h1>SickLists</h1>
+</div>
+{{ render(controller('SickListsBundle:Project:index', {
+	'project_id': project_id|default(1)
+})) }}
 {% endblock %}
 
 {% block content %}
@@ -24,4 +27,8 @@
 	{% endfor %}
 	</ul>
 </article>
+{% endblock %}
+{% block javascripts %}
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="{{ asset('bundles/sicklists/js/projects.js') }}"></script>
 {% endblock %}

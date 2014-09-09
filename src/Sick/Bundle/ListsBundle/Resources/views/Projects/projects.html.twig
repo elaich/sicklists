@@ -1,8 +1,32 @@
-<ul class="projects">
-	{% for project in projects %}
-		<li class="project-list-item">
-		<a href="{{ path('sick_lists_show_project', {'id': project.id}) }}">{{ project.text }}</a>
+<section id="left-list-holder">
+	<header>
+		Projects
+	</header>
+	<article>
+	<ul class="projects">
+		{% for project in projects %}
+		<li class="clickable project-list-item {{ (project.id == project_id)? 'current':'' }}">
+			<img src="{{ asset('bundles/sicklists/images/arrow89.png') }}">
+			<a href="{{ path('sick_lists_show_project', {'id': project.id}) }}">{{ project.text }}</a>
 		</li>
-	{% endfor %}
-</ul>
-{{ form(form, {'action': path('sick_lists_postproject')}) }}
+		{% endfor %}
+	</ul>
+	<div id="add-project">
+	{{ form_start(form, {'action': path('sick_lists_postproject')}) }}
+		<div>
+			{{ form_widget(form.text) }}
+		</div>
+		<div>
+			{{ form_widget(form.save) }}
+			<a class="cancel" href="">Cancel</a>
+		</div>
+	{{ form_end(form) }}
+	</div>
+	</article>
+	<footer>
+		<a id="add-project-link" href="">
+			<img class="plus-red" width="10" height="10" src="{{ asset('bundles/sicklists/images/plus_red.png') }}">
+			Add Project
+		</a>
+	</footer>
+</section>

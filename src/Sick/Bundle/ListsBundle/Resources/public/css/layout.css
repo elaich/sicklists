@@ -1,8 +1,27 @@
+html
+{
+	font: 1em/1.25 "Open Sans",sans-serif;
+}
 body
 {
 	background-color: #F2F2F2;
 	margin-top: 0px;
+	color: #333333;
 	padding: 0 0 0 30px !important;
+	font-size: 80%;
+}
+
+a, input, select, textarea 
+{
+	margin: 0;
+	padding: 0;
+	font: normal normal normal 1em/1.25 "Open Sans",sans-serif;
+}
+
+a, a:link, a:visited, a:active, a:hover 
+{
+	 text-decoration: none;
+	 color: inherit;
 }
 
 #wrapper
@@ -11,12 +30,58 @@ body
 	max-width: 950px;
 }
 
+#left-menu:hover
+{
+	overflow-y: auto;
+}
 #left-menu
 {
 	float: left;
 	padding-left: 20px;
 	position: fixed;
 	width: 250px;
+	overflow: hidden;
+}
+
+#left-list-holder
+{
+	width: 230px;
+}
+
+#left-list-holder > footer
+{
+	padding: 20px 0 7px;
+	margin-left: 2px;
+}
+
+#left-list-holder > footer a:hover
+{
+	text-decoration: underline !important;
+}
+
+#left-list-holder > footer a
+{
+	color: #9900ff;
+	padding: 2px;
+}
+
+.plus-red
+{
+	margin-left:2px;
+	margin-right:6px;
+	margin-top:-2px;
+}
+
+.cancel:hover
+{
+	text-decoration: underline !important;
+}
+
+.cancel
+{
+	color: #555 !important;
+	font-size: 0.8em;
+	padding: 2px 5px;
 }
 
 #content
@@ -82,3 +147,81 @@ body
 	font-size: 50px;
 	margin-top: 5px;
 }
+
+#left-menu .projects
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.project-list-item
+{
+	padding: 7px 5px;
+	text-align: left;
+}
+
+.project-list-item img
+{
+	margin-left:2px;
+	margin-right:6px;
+	padding-bottom:5px;
+	float:left;
+}
+
+.clickable
+{
+	cursor: pointer;
+}
+
+li.current
+{
+	background: none repeat scroll 0 0 #fff;
+}
+
+li.current a
+{
+	color: purple;
+	line-height: 17px;
+}
+
+#left-list-holder > header
+{
+	color: #737373;
+	border-bottom: 2px solid #aaa;
+	display: inline-block;
+	margin-bottom: 15px;
+}
+
+#add-project
+{
+	margin-top: 5px;
+}
+
+#add-project form
+{
+	display: none;
+}
+
+#add-project input
+{
+	border: 1px solid #f2f2f2;
+	border-radius: 0;
+	height: auto;
+	width: 90%;
+	float: left;
+	padding: 7px 5px;
+	display: block;
+}
+
+.add-project-button,
+.add-project-button:visited
+{
+	padding:7px 5px;
+	margin-top: 5px;
+	margin-right: 7px;
+	border: 1px solid transparent;
+	color: white !important;
+	background: none repeat scroll 0 center #cc66cc;
+}
+
