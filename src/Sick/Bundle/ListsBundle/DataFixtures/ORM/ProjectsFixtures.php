@@ -10,13 +10,20 @@ class ProjectsFixtures extends AbstractFixture implements OrderedFixtureInterfac
 {
 	public function load(ObjectManager $manager)
 	{
-		$project = new Project();
-		$project->setText('A little project');
+		$project1 = new Project();
+		$project1->setText('A little project');
 
-		$manager->persist($project);
+		$manager->persist($project1);
 		$manager->flush();
 
-		$this->addReference('project-1', $project);
+		$project2 = new Project();
+		$project2->setText('Another little project');
+
+		$manager->persist($project2);
+		$manager->flush();
+
+		$this->addReference('project-1', $project1);
+		$this->addReference('project-2', $project2);
 	}
 
 	public function getOrder()

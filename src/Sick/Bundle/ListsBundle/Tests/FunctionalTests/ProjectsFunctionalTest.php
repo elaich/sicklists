@@ -33,5 +33,21 @@ class ProjectControllerTest extends WebTestCase
 		foreach ($itemsToBeDeleted as $item)
 			$em->remove($item);
 		$em->flush();
+
 	}
+
+	public function testEditProject()
+	{
+		$client = static::createClient();
+
+		$crawler = $client->request('GET', '/');
+
+		$project_link = $crawler->selectLink('A little project')->link();
+
+		$crawler = $client->click($project_link);
+
+		$this->assertEquals(1, $crawler->filter('#content li:contains("Buy 20 grams")')->count());
+		$this->assertEquals(0, $crawler->filter('#content li:contains("Smoke 20 grams")')->count());
+	}
+
 }

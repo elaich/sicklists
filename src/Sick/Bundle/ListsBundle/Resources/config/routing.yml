@@ -11,3 +11,10 @@ sick_lists_postproject:
     path: /projects/new
     defaults: { _controller: SickListsBundle:Project:addProject }
     methods: [POST]
+
+sick_lists_show_project:
+    path: /projects/{id}
+    defaults: { _controller: SickListsBundle:Project:showProject }
+    methods: [GET]
+    requirements:
+        id: \d+

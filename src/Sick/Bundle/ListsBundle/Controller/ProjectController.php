@@ -5,6 +5,9 @@ namespace Sick\Bundle\ListsBundle\Controller;
 use Sick\Bundle\ListsBundle\Entity\Project;
 use Sick\Bundle\ListsBundle\Form\ProjectType;
 
+use Sick\Bundle\ListsBundle\Form\ListItemType;
+use Sick\Bundle\ListsBundle\Entity\ListItem;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -40,5 +43,22 @@ class ProjectController extends Controller
 		}
 
 		return $this->redirect($this->generateUrl('sick_lists_homepage'));
+	}
+
+	public function showProjectAction($id)
+	{
+		$repository = $this->getDoctrine()
+							->getRepository('SickListsBundle:ListItem');
+
+		$items = $repository->findBy(array('project' => $id));
+
+		$item = new ListItem();
+
+		$form = $this->createForm(new ListItemType(), $item);
+
+        return $this->render('SickListsBundle:Lists:index.html.twig', array(
+			'form' => $form->createView(),
+			'items' => $items
+		)); 
 	}
 }

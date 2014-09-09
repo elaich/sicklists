@@ -1,7 +1,7 @@
 <ul class="projects">
 	{% for project in projects %}
 		<li class="project-list-item">
-		{{ project.text }}
+		<a href="{{ path('sick_lists_show_project', {'id': project.id}) }}">{{ project.text }}</a>
 		</li>
 	{% endfor %}
 </ul>

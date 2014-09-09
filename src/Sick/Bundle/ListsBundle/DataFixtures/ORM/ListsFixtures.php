@@ -10,11 +10,18 @@ class ListsFixtures extends AbstractFixture implements OrderedFixtureInterface
 {
 	public function load(ObjectManager $manager)
 	{
-		$item = new ListItem();
-		$item->setText("Buy 20 grams");
-		$item->setProject($this->getReference('project-1'));
+		$item1 = new ListItem();
+		$item1->setText("Buy 20 grams");
+		$item1->setProject($this->getReference('project-1'));
 
-		$manager->persist($item);
+		$manager->persist($item1);
+		$manager->flush();
+
+		$item2 = new ListItem();
+		$item2->setText("Smoke 20 grams");
+		$item2->setProject($this->getReference('project-2'));
+
+		$manager->persist($item2);
 		$manager->flush();
 	}
 
