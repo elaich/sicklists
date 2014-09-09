@@ -13,7 +13,7 @@
 
 {% block content %}
 <header>
-	{{ form(form, {'action': path('sick_lists_postitem')}) }}
+	{{ form(form, {'action': path('sick_lists_add_task', {'id': project_id|default(1)}) }) }}
 </header>
 <article>
 	<ul class="items">

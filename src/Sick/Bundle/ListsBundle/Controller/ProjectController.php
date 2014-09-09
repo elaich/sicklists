@@ -58,7 +58,31 @@ class ProjectController extends Controller
 
         return $this->render('SickListsBundle:Lists:index.html.twig', array(
 			'form' => $form->createView(),
-			'items' => $items
+			'items' => $items,
+			'project_id' => $id,
 		)); 
+	}
+
+	public function addTaskToProjectAction(Request $request, $id)
+	{
+		$repository = $this->getDoctrine()
+							->getRepository('SickListsBundle:Project');
+		$project = $repository->find($id);
+
+		$task = new ListItem();
+		$task->setProject($project);
+
+		$form = $this->createForm(new ListItemType(), $task);
+
+		$form->bind($request);
+		if ($form->isValid())
+		{
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($task);
+			$em->flush();
+		}
+
+		return $this->redirect($this->generateUrl('sick_lists_show_project', array(
+			'id' => $id)));
 	}
 }

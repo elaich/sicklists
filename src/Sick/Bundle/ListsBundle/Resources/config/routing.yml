@@ -18,3 +18,10 @@ sick_lists_show_project:
     methods: [GET]
     requirements:
         id: \d+
+
+sick_lists_add_task:
+    path: /projects/{id}/new
+    defaults: { _controller: SickListsBundle:Project:addTaskToProject }
+    methods: [POST]
+    requirements:
+        id: \d+
