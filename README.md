@@ -3,6 +3,7 @@ SickLists ToDo Web Application
 
 Create projects and add tasks to them, inspired from todoist.com.
 
+![screenshot](http://oi61.tinypic.com/24lv22x.jpg)
 1) Prerequisites
 ----------------
 
